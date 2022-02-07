@@ -17,6 +17,8 @@ void error_put();
 int getdamage(int level);
 int curser(int level);
 int getcoins(int level);
+void inventory();
+void cprinter();
 
 class LevelsandStore
 {
@@ -29,14 +31,15 @@ while(1)
     int a;
     system("CLS");
     nameofgame();
-    cout<<"Coins : "<<coins<<endl;
-    cout<< "\n\t\t\t [1] Half Armor (1000)  \t:\tOnly for one level" << endl
-        << "\t\t\t [2] Full Armor (2000)  \t:\tOnly for one level" << endl
-        << "\t\t\t [3] Instant Health (1000) \t: \tAvailable "<<IH<< endl
-        << "\t\t\t [4] Damage Booster (1000)  \t:\tAvailable "<<DB<< endl
-        << "\t\t\t [5] Invisibility Potion (750)  : \tAvailable "<<IV<< endl
-        << "\t\t\t [6] Anti-Curse (1250)  \t:\tAvailable "<<AC<< endl
-        << "\t\t\t [7] Exit " << endl;
+    cprinter();
+    cout<< "\n\t\t\t [1] Half Armor (1000) "<< endl
+        << "\t\t\t [2] Full Armor (2000) "<< endl
+        << "\t\t\t [3] Instant Health (1000) "<< endl
+        << "\t\t\t [4] Damage Booster (1000) "<< endl
+        << "\t\t\t [5] Invisibility Potion (750) "<< endl
+        << "\t\t\t [6] Anti-Curse (1250) "<< endl
+        << "\t\t\t [7] Inventory "<< endl
+        << "\t\t\t [8] Exit " << endl;
     cout<<"\n\nChoice : ";
     cin>>a;
     switch(a)
@@ -58,8 +61,10 @@ while(1)
                             break;
             case    6   :   coins-=1250;
                             AC++;
-                            break;                
-            case    7   :   system("CLS");
+                            break;  
+            case    7   :   inventory();
+                            break;         
+            case    8   :   system("CLS");
                             return 0;
                             break;
 
@@ -216,6 +221,7 @@ class hardcore : public LevelsandStore
     level(5);
     }
 };
+
 int main()
 {
     int choice;
@@ -226,7 +232,7 @@ while(1)
     system("CLS");
     nameofgame();
     health=100;
-    cout<<"Select Level : \n[1] Level 1\n[2] Level 2\n[3] Level 3\n[4] Level 4\n[5] Level 5\n[6] Hard Core\n[7] Store\n[8] Exit";
+    cout<<"Select Level : \n[1] Level 1\n[2] Level 2\n[3] Level 3\n[4] Level 4\n[5] Level 5\n[6] Hard Core\n[7] Store\n[8] Inventory\n[9] Exit";
     cout<<"\n\nChoice : ";
     cin>>choice;
     switch(choice)
@@ -245,7 +251,9 @@ while(1)
                 break;
         case 7 : obj.store();
                 break;
-        case 8 : return 0;
+        case 8 : inventory();
+                break;
+        case 9 : return 0;
 
         default: system("CLS");
                 error_put();
@@ -369,4 +377,64 @@ int getcoins(int level)
     default  :   x=0;
     }
     return x;
+}
+
+void inventory()
+{
+    nameofgame();
+    cprinter();
+    if(armor<9)
+        cout<<"-------------\n";
+    else if(armor>=10&&armor<=99)
+        cout<<"--------------\n";
+    else if(armor>=100)
+        cout<<"---------------\n";
+                                    cout<<"| Armor | "<<armor<<" |"<<endl;
+    if(armor<9)
+        cout<<"-------------\n";
+    else if(armor>=10&&armor<=99)
+        cout<<"--------------\n";
+    else if(armor>=100)
+        cout<<"---------------\n";
+
+
+    cout<<"\t\t\t--------------------------------"<<endl;
+    cout<<"\t\t\t|    Instant Health    |   "<<IH<<"   |"<<endl;
+    cout<<"\t\t\t--------------------------------"<<endl;
+    cout<<"\t\t\t|    Damage Booster    |   "<<DB<<"   |"<<endl;
+    cout<<"\t\t\t--------------------------------"<<endl;
+    cout<<"\t\t\t| Invisibility Potions |   "<<IV<<"   |"<<endl;
+    cout<<"\t\t\t--------------------------------"<<endl;
+    cout<<"\t\t\t|      Anti-Curse      |   "<<AC<<"   |"<<endl;
+    cout<<"\t\t\t--------------------------------"<<endl;
+
+    cout<<"\n\nPress any key to continue.";
+    getch();
+}
+
+void cprinter()
+{
+    if(coins<9)
+        cout<<"-------------\n";
+    else if(coins>=10&&coins<=99)
+        cout<<"--------------\n";
+    else if(coins>=100&&coins<=999)
+        cout<<"---------------\n";
+    else if(coins>=1000&&coins<=9999)
+        cout<<"----------------\n";
+    else if(coins>=10000&&coins<=99999)
+        cout<<"-----------------\n";
+    
+    cout<<"| Coins | "<<coins<<" |"<<endl;
+
+     if(coins<9)
+        cout<<"-------------\n";
+    else if(coins>=10&&coins<=99)
+        cout<<"--------------\n";
+    else if(coins>=100&&coins<=999)
+        cout<<"---------------\n";
+    else if(coins>=1000&&coins<=9999)
+        cout<<"----------------\n";
+    else if(coins>=10000&&coins<=99999)
+        cout<<"-----------------\n";
 }
