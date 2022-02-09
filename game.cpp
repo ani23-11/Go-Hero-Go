@@ -19,6 +19,7 @@ int curser(int level);
 int getcoins(int level);
 void inventory();
 void cprinter();
+int main();
 
 class LevelsandStore
 {
@@ -140,7 +141,11 @@ int level(int leveldecider, int checkhc)
                             cout<<"\nYour enemy dealt damage of "<<temp-health;
 
                             if(health<1)
-                                {cout<<"\n\nYou Lost!"; getch(); return 0;}
+                                {cout<<"\n\nYou Lost!"; getch(); 
+                                if(checkhc==1) 
+                                    main(); 
+                                else
+                                    return 0;}
                             getch();
                             break;
             
