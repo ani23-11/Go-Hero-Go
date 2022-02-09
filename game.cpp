@@ -214,7 +214,8 @@ class hardcore : public LevelsandStore
     cout<<"\n\t\t * 8 Damage Boosters ";
     cout<<"\n\t\t * 7 Invisibility Potion ";
     cout<<"\n\t\t * 3 Anti-Curse  ";
-    cout<<"\n > About 32000 coins would be needed for all of these ";
+    cout<<"\n\n > About 32000 coins would be needed for all of these ";
+    cout<<"\n > Once started you can't exit to the homescreen, until you've defeated all the enemies or have been defeated!";
     cout<<"\n\nPress any key to continue.";
     getch();
     level(1,1);
