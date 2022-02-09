@@ -74,7 +74,7 @@ while(1)
 }
     }
 
-int level(int leveldecider)
+int level(int leveldecider, int checkhc)
     {
         int choice,ehealth=50,checkdb=0,checkiv=0,checkcurser=0;
         switch(leveldecider)
@@ -109,7 +109,8 @@ int level(int leveldecider)
     cout<<"\n[3] DAMAGE BOOSTER ("<<DB<<" available)";
     cout<<"\n[4] INVISIBILITY POTION ("<<IV<<" available)";
     cout<<"\n[5] ANTICURSE ("<<AC<<" available)";
-    cout<<"\n[6] EXIT TO HOMESCREEN"<<endl;
+    if(checkhc==0)
+    {    cout<<"\n[6] EXIT TO HOMESCREEN"<<endl;    }
     cout<<"\n\nChoice : ";
     cin>>choice;
     srand(time(0));
@@ -184,8 +185,10 @@ int level(int leveldecider)
                                 {cout<<"You dont have enough potions!"; getch();}
                             break;
 
-            case    6   :   return 0;
-                            break;
+            case    6   :   if(checkhc==0)
+                                return 0;
+                            else
+                                break;
 
                 default :   system("CLS");
                             error_put();
@@ -214,11 +217,11 @@ class hardcore : public LevelsandStore
     cout<<"\n > About 32000 coins would be needed for all of these ";
     cout<<"\n\nPress any key to continue.";
     getch();
-    level(1);
-    level(2);
-    level(3);
-    level(4);
-    level(5);
+    level(1,1);
+    level(2,1);
+    level(3,1);
+    level(4,1);
+    level(5,1);
     }
 };
 
@@ -232,20 +235,21 @@ while(1)
     system("CLS");
     nameofgame();
     health=100;
-    cout<<"Select Level : \n[1] Level 1\n[2] Level 2\n[3] Level 3\n[4] Level 4\n[5] Level 5\n[6] Hard Core\n[7] Store\n[8] Inventory\n[9] Exit";
+    cout<<"\n\n\tSelect Level : \n\t\t\t[1] Level 1\n\t\t\t[2] Level 2\n\t\t\t[3] Level 3\n\t\t\t"
+    <<"[4] Level 4\n\t\t\t[5] Level 5\n\t\t\t[6] Hard Core\n\t\t\t[7] Store\n\t\t\t[8] Inventory\n\t\t\t[9] Exit";
     cout<<"\n\nChoice : ";
     cin>>choice;
     switch(choice)
     {
-        case 1 : obj.level(1);
+        case 1 : obj.level(1,0);
                 break;
-        case 2 : obj.level(2);
+        case 2 : obj.level(2,0);
                 break;
-        case 3 : obj.level(3);
+        case 3 : obj.level(3,0);
                 break;
-        case 4 : obj.level(4);
+        case 4 : obj.level(4,0);
                 break;
-        case 5 : obj.level(5);
+        case 5 : obj.level(5,0);
                 break;
         case 6 : obj2.hc();
                 break;
@@ -280,11 +284,11 @@ void nameofgame()
 {
     system("CLS");
     cout<<endl;
-    cout<<"\t\t\t\t\t\t"<<"--------------------"<<endl;
-    cout<<"\t\t\t\t\t\t"<<"|                  |"<<endl;
-    cout<<"\t\t\t\t\t\t"<<"|   Go Mickey Go   |"<<endl;
-    cout<<"\t\t\t\t\t\t"<<"|                  |"<<endl;
-    cout<<"\t\t\t\t\t\t"<<"--------------------"<<endl;
+    cout<<"\t\t\t\t\t\t"<<"------------------"<<endl;
+    cout<<"\t\t\t\t\t\t"<<"|                |"<<endl;
+    cout<<"\t\t\t\t\t\t"<<"|   Go Hero Go   |"<<endl;
+    cout<<"\t\t\t\t\t\t"<<"|                |"<<endl;
+    cout<<"\t\t\t\t\t\t"<<"------------------"<<endl;
 }
 void error_put()
 {
