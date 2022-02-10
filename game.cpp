@@ -19,6 +19,8 @@ int curser(int level);
 int getcoins(int level);
 void inventory();
 void cprinter();
+void opponameprinter(int x);
+void info();
 int main();
 
 class LevelsandStore
@@ -92,9 +94,7 @@ int level(int leveldecider, int checkhc)
         int temp=health,temp2=ehealth;
         system("CLS");
         nameofgame();
-    cout<<"-------------\t\t\t\t\t\t\t\t\t\t\t\t-------------"<<endl;
-    cout<<"|   Player  |\t\t\t\t\t\t\t\t\t\t\t\t|  Oponent  |"<<endl;
-    cout<<"-------------\t\t\t\t\t\t\t\t\t\t\t\t-------------"<<endl;
+    opponameprinter(leveldecider);
     cout<<"HEALTH : "<<health<<"\t\t\t\t\t\t\t\t\t\t\t\tHEALTH : "<<ehealth;
     switch(amm)
     {
@@ -241,12 +241,14 @@ while(1)
     system("CLS");
     nameofgame();
     health=100;
-    cout<<"\n\n\tSelect Level : \n\t\t\t[1] Level 1\n\t\t\t[2] Level 2\n\t\t\t[3] Level 3\n\t\t\t"
+    cout<<"\n\n\tSelect : \n\t\t\t[0] About The Game\n\t\t\t[1] Level 1\n\t\t\t[2] Level 2\n\t\t\t[3] Level 3\n\t\t\t"
     <<"[4] Level 4\n\t\t\t[5] Level 5\n\t\t\t[6] Hard Core\n\t\t\t[7] Store\n\t\t\t[8] Inventory\n\t\t\t[9] Exit";
     cout<<"\n\nChoice : ";
     cin>>choice;
     switch(choice)
     {
+        case 0 : info();
+                break;
         case 1 : obj.level(1,0);
                 break;
         case 2 : obj.level(2,0);
@@ -271,7 +273,6 @@ while(1)
 }
     return 0;
 }
-
 
 void loadingscreen(int x)
 {
@@ -446,4 +447,56 @@ void cprinter()
         cout<<"----------------\n";
     else if(coins>=10000&&coins<=99999)
         cout<<"-----------------\n";
+}
+
+void opponameprinter(int x)
+{
+    
+    switch(x)
+    {
+    case 1   :  cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t-------------"<<endl;
+                cout<<"|  Hero  |\t\t\t\t\t\t\t\t\t\t\t\t|  Tin Man  |"<<endl;
+                cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t-------------"<<endl;
+                break;
+
+    case 2   :  cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t-------------------"<<endl;
+                cout<<"|  Hero  |\t\t\t\t\t\t\t\t\t\t\t\t| Perverse Knight |"<<endl;
+                cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t-------------------"<<endl;
+                break;
+
+    case 3   :  cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t---------------------"<<endl;
+                cout<<"|  Hero  |\t\t\t\t\t\t\t\t\t\t\t\t| Monster der Nacht |"<<endl;
+                cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t---------------------"<<endl;
+                break;
+
+    case 4   :  cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t---------------------"<<endl;
+                cout<<"|  Hero  |\t\t\t\t\t\t\t\t\t\t\t\t| Protector of Dark |"<<endl;
+                cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t---------------------"<<endl;
+                break;
+
+    case 5   :  cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t----------------"<<endl;
+                cout<<"|  Hero  |\t\t\t\t\t\t\t\t\t\t\t\t| Demon Dragon |"<<endl;
+                cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t----------------"<<endl;
+                break;
+    
+    default  :  cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t------------"<<endl;
+                cout<<"|  Hero  |\t\t\t\t\t\t\t\t\t\t\t\t| Opponent |"<<endl;
+                cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t------------"<<endl;
+                break;
+    }
+}
+
+void info()
+{
+    nameofgame();
+
+    cout<<"Welcome to Go Hero Go!";
+    cout<<"\nThe player would have a bunch of different battles to choose from.";
+    cout<<"\nEvery opponent is different from one another.";
+    cout<<"\nAs the level increases it becomes more difficult to win.";
+    cout<<"\nDefeating an opponent would give you rewards in the form of coins that you can use to stack up your inventory!";
+
+    cout<<"\n\nPress any key to continue.";
+    getch();
+
 }
