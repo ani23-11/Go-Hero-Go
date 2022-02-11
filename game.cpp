@@ -242,7 +242,7 @@ while(1)
     nameofgame();
     health=100;
     cout<<"\n\n\tSelect : \n\t\t\t[0] About The Game\n\t\t\t[1] Level 1\n\t\t\t[2] Level 2\n\t\t\t[3] Level 3\n\t\t\t"
-    <<"[4] Level 4\n\t\t\t[5] Level 5\n\t\t\t[6] Hard Core\n\t\t\t[7] Store\n\t\t\t[8] Inventory\n\t\t\t[9] Exit";
+    <<"[4] Level 4\n\t\t\t[5] Level 5\n\t\t\t[6] The Ultimate Quest\n\t\t\t[7] Store\n\t\t\t[8] Inventory\n\t\t\t[9] Exit";
     cout<<"\n\nChoice : ";
     cin>>choice;
     switch(choice)
@@ -285,10 +285,10 @@ void loadingscreen(int x)
         printf("%c",177);
         Sleep(x);
     }
-    nameofgame();
 }
 void nameofgame()
 {
+    //loadingscreen(20);
     system("CLS");
     cout<<endl;
     cout<<"\t\t\t\t\t\t"<<"------------------"<<endl;
@@ -300,9 +300,8 @@ void nameofgame()
 void error_put()
 {
     system("CLS");
-    cout<<"Error. Please enter a Valid choice. Press any key to Continue.\n\n";
+    cout<<"Error. Please enter a Valid choice. Press any key to Continue.\n";
     getch();
-    main();
 }
 
 int getdamage(int level)
@@ -311,9 +310,9 @@ int getdamage(int level)
     int x;
     switch(level)
     {
-    case 1   :   x=(rand()%6 +15);
+    case 1   :   x=(rand()%6 +10);
                 break;
-    case 11  :   x=(rand()%6 +30);
+    case 11  :   x=(rand()%6 +25);
                 break;
     case 2   :   x=(rand()%11 +15);
                 break;
@@ -327,7 +326,7 @@ int getdamage(int level)
                 break;
     case 14  :   x=(rand()%16 +35);
                 break;
-    case 5   :   x=(rand()%16 +25);
+    case 5   :   x=(rand()%16 +30);
                 break;
     case 15  :   x=(rand()%16 +40);
                 break;        
@@ -382,7 +381,7 @@ int getcoins(int level)
                 break;
     case 4   :   x=(rand()%501 +3500);
                 break;
-    case 5   :   x=5000;
+    case 5   :   x=10000;
                 break;       
     default  :   x=0;
     }
@@ -489,12 +488,27 @@ void opponameprinter(int x)
 void info()
 {
     nameofgame();
-
-    cout<<"Welcome to Go Hero Go!";
+    cout<<"\n\nWelcome to Go Hero Go!";
     cout<<"\nThe player would have a bunch of different battles to choose from.";
-    cout<<"\nEvery opponent is different from one another.";
-    cout<<"\nAs the level increases it becomes more difficult to win.";
+    cout<<"\nEvery opponent is different from one another, as the level increases it becomes more difficult to win.";
     cout<<"\nDefeating an opponent would give you rewards in the form of coins that you can use to stack up your inventory!";
+    cout<<"\nLook-Out for the Curses! They'll deal tons of extra damage until cured";
+
+    cout<<"\n\nAbout The Opponents : \n";
+    cout<<"\n\tTin Man : The Notorious Pawn of Evil.\n\t\t\t| Damage Range : 10-15 | 3% chance of  giving a Curse | Coins rewarded : 1500-2000 |";
+    cout<<"\n\n\tPerverse Knight : The one who swore to fight the Good.\n\t\t\t| Damage Range : 15-25 | 6% chance of  giving a Curse | Coins rewarded : 2000-2500 |";
+    cout<<"\n\n\tMonster der Nacht : The lurker of the Night.\n\t\t\t| Damage Range : 15-30 | 10% chance of giving a Curse | Coins rewarded : 2500-3000 |";
+    cout<<"\n\n\tProtector of Dark : The one who pledged to bestow Darkness in the world.\n\t\t\t| Damage Range : 20-35 | 15% chance of giving a Curse | Coins rewarded : 3500-4000 |";
+    cout<<"\n\n\tDemon Dragon : Conqueror of Worlds.\n\t\t\t| Damage Range : 30-45 | 20% chance of giving a Curse |   Coins rewarded : 10000   |";
+
+    cout<<"\n\nAbout the Potions & Gear : \n";
+    cout<<"\n\t\t> Health Potion : It'll provide instant 25 health points (Max Health : 100)";
+    cout<<"\n\t\t> Damage Booster : It'll deal extra 20 damage on the opponent (Base Damage Range : 15-35)";
+    cout<<"\n\t\t> Invisibility Potion : It'll hide the Hero from opponent's next attack";
+    cout<<"\n\t\t> Anti-Curse : It can be used to remove the Curse effect";
+    cout<<"\n\t\t> Half Armor will provide 50 and Full armor will provide 100 extra non-regenerative Health Points (Not stackable)";
+
+    cout<<"\n\nHow To Play?\nYou have the choice to take this adventure in any direction you want to! Just make sure you press the right KEY ;)";
 
     cout<<"\n\nPress any key to continue.";
     getch();
