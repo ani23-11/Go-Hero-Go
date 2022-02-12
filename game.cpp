@@ -21,6 +21,7 @@ void inventory();
 void cprinter();
 void opponameprinter(int x);
 void info();
+void typer(string a, int b);
 int main();
 
 class LevelsandStore
@@ -210,19 +211,21 @@ class hardcore : public LevelsandStore
     {
     system("CLS");
     nameofgame();
-    cout<<"Rules & Recommendation for the HARDCORE LEVEL : \n";
-    cout<<"\n > Store would be accessible once before the 1st level starts";
-    cout<<"\n > You won't be allowed to access the store in between the levels";
-    cout<<"\n > Recommended gear for the ultimate quest : ";
+    cout<<"\n\nRules & Recommendation for the HARDCORE LEVEL : \n";
+    string text="\n > Store would be accessible once before the 1st level starts\n > You won't be allowed to access the store in between the levels\n > Recommended gear for the ultimate quest : ";
+    typer(text,30);
     cout<<"\n\n\t\t * Full Armor ";
     cout<<"\n\t\t * 10 Health Potions ";
     cout<<"\n\t\t * 8 Damage Boosters ";
     cout<<"\n\t\t * 7 Invisibility Potion ";
     cout<<"\n\t\t * 3 Anti-Curse  ";
-    cout<<"\n\n > About 32000 coins would be needed for all of these ";
-    cout<<"\n > Once started you can't exit to the homescreen, until you've defeated all the enemies or have been defeated!";
+    text="\n\n > About 35000 coins would be needed for all of these ";
+    typer(text,30);
+    text="\n > Once started you can't exit to the homescreen, until you've defeated all the enemies or have been defeated!";
+    typer(text,60);
     cout<<"\n\nPress any key to continue.";
     getch();
+    store();
     level(1,1);
     level(2,1);
     level(3,1);
@@ -485,31 +488,49 @@ void opponameprinter(int x)
     }
 }
 
+void typer(string a, int b)
+{
+    int x=0;
+    while(a[x]!='\0')
+    {
+	cout<<a[x];
+	Sleep(b);
+	x++;
+    }
+}
 void info()
 {
     nameofgame();
-    cout<<"\n\nWelcome to Go Hero Go!";
-    cout<<"\nThe player would have a bunch of different battles to choose from.";
-    cout<<"\nEvery opponent is different from one another, as the level increases it becomes more difficult to win.";
-    cout<<"\nDefeating an opponent would give you rewards in the form of coins that you can use to stack up your inventory!";
-    cout<<"\nLook-Out for the Curses! They'll deal tons of extra damage until cured";
 
-    cout<<"\n\nAbout The Opponents : \n";
-    cout<<"\n\tTin Man : The Notorious Pawn of Evil.\n\t\t\t| Damage Range : 10-15 | 3% chance of  giving a Curse | Coins rewarded : 1500-2000 |";
-    cout<<"\n\n\tPerverse Knight : The one who swore to fight the Good.\n\t\t\t| Damage Range : 15-25 | 6% chance of  giving a Curse | Coins rewarded : 2000-2500 |";
-    cout<<"\n\n\tMonster der Nacht : The lurker of the Night.\n\t\t\t| Damage Range : 15-30 | 10% chance of giving a Curse | Coins rewarded : 2500-3000 |";
-    cout<<"\n\n\tProtector of Dark : The one who pledged to bestow Darkness in the world.\n\t\t\t| Damage Range : 20-35 | 15% chance of giving a Curse | Coins rewarded : 3500-4000 |";
-    cout<<"\n\n\tDemon Dragon : Conqueror of Worlds.\n\t\t\t| Damage Range : 30-45 | 20% chance of giving a Curse |   Coins rewarded : 10000   |";
+    string text="\n\nWelcome to Go Hero Go!\nThe player would have a bunch of different battles to choose from.\nEvery opponent is different from one another, as the level increases it becomes more difficult to win.\nDefeating an opponent would give you rewards in the form of coins that you can use to stack up your inventory!\nLook-Out for the Curses! They'll deal tons of extra damage until cured";
+    typer(text,30);
 
-    cout<<"\n\nAbout the Potions & Gear : \n";
-    cout<<"\n\t\t> Health Potion : It'll provide instant 25 health points (Max Health : 100)";
-    cout<<"\n\t\t> Damage Booster : It'll deal extra 20 damage on the opponent (Base Damage Range : 15-35)";
-    cout<<"\n\t\t> Invisibility Potion : It'll hide the Hero from opponent's next attack";
-    cout<<"\n\t\t> Anti-Curse : It can be used to remove the Curse effect";
-    cout<<"\n\t\t> Half Armor will provide 50 and Full armor will provide 100 extra non-regenerative Health Points (Not stackable)";
+    text="\n\nAbout The Opponents : \n\n\tTin Man : The Notorious Pawn of Evil.";
+    typer(text,30);
+    cout<<"\n\t\t\t| Damage Range : 10-15 | 3% chance of  giving a Curse | Coins rewarded : 1500-2000 |";
 
-    cout<<"\n\nHow To Play?\nYou have the choice to take this adventure in any direction you want to! Just make sure you press the right KEY ;)";
+    text="\n\n\tPerverse Knight : The one who swore to fight the Good.";
+    typer(text,30);
+    cout<<"\n\t\t\t| Damage Range : 15-25 | 6% chance of  giving a Curse | Coins rewarded : 2000-2500 |";
 
+    text="\n\n\tMonster der Nacht : The lurker of the Night.";
+    typer(text,30);
+    cout<<"\n\t\t\t| Damage Range : 15-30 | 10% chance of giving a Curse | Coins rewarded : 2500-3000 |";
+    
+    text="\n\n\tProtector of Dark : The one who pledged to bestow Darkness in the world.";
+    typer(text,30);
+    cout<<"\n\t\t\t| Damage Range : 20-35 | 15% chance of giving a Curse | Coins rewarded : 3500-4000 |";
+
+    text="\n\n\tDemon Dragon : Conqueror of Worlds.";
+    typer(text,30);
+    cout<<"\n\t\t\t| Damage Range : 30-45 | 20% chance of giving a Curse |   Coins rewarded : 10000   |";
+
+    text="\n\nAbout the Potions & Gear : \n\n\t\t> Health Potion : It'll provide instant 25 health points (Max Health : 100)\n\t\t> Damage Booster : It'll deal extra 20 damage on the opponent (Base Damage Range : 15-35)\n\t\t> Invisibility Potion : It'll hide the Hero from opponent's next attack\n\t\t> Anti-Curse : It can be used to remove the Curse effect\n\t\t> Half Armor will provide 50 and Full armor will provide 100 extra non-regenerative Health Points (Not stackable)";
+    typer(text,30);
+
+    text="\n\nHow To Play?\nYou have the choice to take this adventure in any direction you want to! Just make sure you press the right KEY ;)";
+    typer(text,50);
+    
     cout<<"\n\nPress any key to continue.";
     getch();
 
