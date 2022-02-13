@@ -294,11 +294,11 @@ void nameofgame()
     //loadingscreen(20);
     system("CLS");
     cout<<endl;
-    cout<<"\t\t\t\t\t\t"<<"------------------"<<endl;
-    cout<<"\t\t\t\t\t\t"<<"|                |"<<endl;
-    cout<<"\t\t\t\t\t\t"<<"|   Go Hero Go   |"<<endl;
-    cout<<"\t\t\t\t\t\t"<<"|                |"<<endl;
-    cout<<"\t\t\t\t\t\t"<<"------------------"<<endl;
+    
+    printf("\x1B[34m\t\t\t\t\t\t------------------\033[0m\n");
+    printf("\033[3;104;30m\t\t\t\t\t\t    Go Hero Go    \033[0m\n");
+    printf("\x1B[34m\t\t\t\t\t\t------------------\033[0m\n");
+    
 }
 void error_put()
 {
@@ -401,7 +401,7 @@ void inventory()
         cout<<"--------------\n";
     else if(armor>=100)
         cout<<"---------------\n";
-                                    cout<<"| Armor | "<<armor<<" |"<<endl;
+                                    cout<<"| Armor | ";printf("\x1B[32m%d\033[0m",armor);cout<<" |"<<endl;
     if(armor<9)
         cout<<"-------------\n";
     else if(armor>=10&&armor<=99)
@@ -411,13 +411,13 @@ void inventory()
 
 
     cout<<"\t\t\t--------------------------------"<<endl;
-    cout<<"\t\t\t|    Instant Health    |   "<<IH<<"   |"<<endl;
+    cout<<"\t\t\t|    Instant Health    |   ";printf("\x1B[35m%d\033[0m",IH);cout<<"   |"<<endl;
     cout<<"\t\t\t--------------------------------"<<endl;
-    cout<<"\t\t\t|    Damage Booster    |   "<<DB<<"   |"<<endl;
+    cout<<"\t\t\t|    Damage Booster    |   ";printf("\x1B[35m%d\033[0m",DB);cout<<"   |"<<endl;
     cout<<"\t\t\t--------------------------------"<<endl;
-    cout<<"\t\t\t| Invisibility Potions |   "<<IV<<"   |"<<endl;
+    cout<<"\t\t\t| Invisibility Potions |   ";printf("\x1B[35m%d\033[0m",IV);cout<<"   |"<<endl;
     cout<<"\t\t\t--------------------------------"<<endl;
-    cout<<"\t\t\t|      Anti-Curse      |   "<<AC<<"   |"<<endl;
+    cout<<"\t\t\t|      Anti-Curse      |   ";printf("\x1B[35m%d\033[0m",AC);cout<<"   |"<<endl;
     cout<<"\t\t\t--------------------------------"<<endl;
 
     cout<<"\n\nPress any key to continue.";
@@ -437,7 +437,8 @@ void cprinter()
     else if(coins>=10000&&coins<=99999)
         cout<<"-----------------\n";
     
-    cout<<"| Coins | "<<coins<<" |"<<endl;
+    cout<<"| Coins | ";printf("\x1B[33m%d\033[0m",coins);cout<<" |"<<endl;
+    
 
      if(coins<9)
         cout<<"-------------\n";
@@ -457,32 +458,32 @@ void opponameprinter(int x)
     switch(x)
     {
     case 1   :  cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t-------------"<<endl;
-                cout<<"|  Hero  |\t\t\t\t\t\t\t\t\t\t\t\t|  Tin Man  |"<<endl;
+                cout<<"|  ";printf("\x1B[32mHero\033[0m");cout<<"  |\t\t\t\t\t\t\t\t\t\t\t\t|  ";printf("\x1B[31mTin Man\033[0m");cout<<"  |"<<endl;
                 cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t-------------"<<endl;
                 break;
 
     case 2   :  cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t-------------------"<<endl;
-                cout<<"|  Hero  |\t\t\t\t\t\t\t\t\t\t\t\t| Perverse Knight |"<<endl;
+                cout<<"|  ";printf("\x1B[32mHero\033[0m");cout<<"  |\t\t\t\t\t\t\t\t\t\t\t\t| ";printf("\x1B[31mPerverse Knight\033[0m");cout<<" |"<<endl;
                 cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t-------------------"<<endl;
                 break;
 
     case 3   :  cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t---------------------"<<endl;
-                cout<<"|  Hero  |\t\t\t\t\t\t\t\t\t\t\t\t| Monster der Nacht |"<<endl;
+                cout<<"|  ";printf("\x1B[32mHero\033[0m");cout<<"  |\t\t\t\t\t\t\t\t\t\t\t\t| ";printf("\x1B[31mMonster der Nacht\033[0m");cout<<" |"<<endl;
                 cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t---------------------"<<endl;
                 break;
 
     case 4   :  cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t---------------------"<<endl;
-                cout<<"|  Hero  |\t\t\t\t\t\t\t\t\t\t\t\t| Protector of Dark |"<<endl;
+                cout<<"|  ";printf("\x1B[32mHero\033[0m");cout<<"  |\t\t\t\t\t\t\t\t\t\t\t\t| ";printf("\x1B[31mProtector of Dark\033[0m");cout<<" |"<<endl;
                 cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t---------------------"<<endl;
                 break;
 
     case 5   :  cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t----------------"<<endl;
-                cout<<"|  Hero  |\t\t\t\t\t\t\t\t\t\t\t\t| Demon Dragon |"<<endl;
+                cout<<"|  ";printf("\x1B[32mHero\033[0m");cout<<"  |\t\t\t\t\t\t\t\t\t\t\t\t| ";printf("\x1B[31mDemon Dragon\033[0m");cout<<" |"<<endl;
                 cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t----------------"<<endl;
                 break;
     
     default  :  cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t------------"<<endl;
-                cout<<"|  Hero  |\t\t\t\t\t\t\t\t\t\t\t\t| Opponent |"<<endl;
+                cout<<"|  ";printf("\x1B[32mHero\033[0m");cout<<"  |\t\t\t\t\t\t\t\t\t\t\t\t| ";printf("\x1B[31mOpponent\033[0m");cout<<" |"<<endl;
                 cout<<"----------\t\t\t\t\t\t\t\t\t\t\t\t------------"<<endl;
                 break;
     }
