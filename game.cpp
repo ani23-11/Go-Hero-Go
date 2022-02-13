@@ -32,7 +32,7 @@ int store()
     {
 while(1)
 {   
-    char a;
+    char a; 
     system("CLS");
     nameofgame();
     cprinter();
@@ -45,7 +45,9 @@ while(1)
         << "\t\t\t [7] Inventory "<< endl
         << "\t\t\t [8] Exit " << endl;
     cout<<"\n\nChoice : ";
-    cin>>a;
+    string aab;
+    cin>>aab;
+    a=aab[0];
     switch(a)
         {
             case    '1'   :   coins-=1000;
@@ -115,7 +117,9 @@ int level(int leveldecider, int checkhc)
     if(checkhc==0)
     {    cout<<"\n[6] EXIT TO HOMESCREEN"<<endl;    }
     cout<<"\n\nChoice : ";
-    cin>>choice;
+    string aab;
+    cin>>aab;
+    choice=aab[0];
     srand(time(0));
     switch(choice)
         {
@@ -230,7 +234,9 @@ class hardcore : public LevelsandStore
     text="\n > Once started you can't exit to the homescreen, until you've defeated all the enemies or have been defeated!";
     typer(text,50);
     cout<<"\n\nDo you want to continue?\n[1] Yes\n[2] No\n\nChoice : ";
-    cin>>ques;
+    string aab;
+    cin>>aab;
+    ques=aab[0];
     switch(ques)
     {
         case '1' : store();
@@ -262,7 +268,9 @@ while(1)
     cout<<"\n\n\tSelect : \n\t\t\t[0] About The Game\n\t\t\t[1] Level 1\n\t\t\t[2] Level 2\n\t\t\t[3] Level 3\n\t\t\t"
     <<"[4] Level 4\n\t\t\t[5] Level 5\n\t\t\t[6] The Ultimate Quest\n\t\t\t[7] Store\n\t\t\t[8] Inventory\n\t\t\t[9] Exit";
     cout<<"\n\nChoice : ";
-    cin>>choice;
+    string aab;
+    cin>>aab;
+    choice=aab[0];
     switch(choice)
     {
         case '0' : info();
