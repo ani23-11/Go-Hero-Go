@@ -32,7 +32,7 @@ int store()
     {
 while(1)
 {   
-    int a;
+    char a;
     system("CLS");
     nameofgame();
     cprinter();
@@ -48,27 +48,27 @@ while(1)
     cin>>a;
     switch(a)
         {
-            case    1   :   coins-=1000;
+            case    '1'   :   coins-=1000;
                             armor=50;
                             break;
-            case    2   :   coins-=2000;
+            case    '2'   :   coins-=2000;
                             armor=100;
                             break;
-            case    3   :   coins-=1000;
+            case    '3'  :   coins-=1000;
                             IH++;
                             break;
-            case    4   :   coins-=1000;
+            case    '4'   :   coins-=1000;
                             DB++;
                             break;
-            case    5   :   coins-=750;
+            case    '5'   :   coins-=750;
                             IV++;
                             break;
-            case    6   :   coins-=1250;
+            case    '6'   :   coins-=1250;
                             AC++;
                             break;  
-            case    7   :   inventory();
+            case    '7'   :   inventory();
                             break;         
-            case    8   :   system("CLS");
+            case    '8'   :   system("CLS");
                             return 0;
                             break;
 
@@ -80,7 +80,8 @@ while(1)
 
 int level(int leveldecider, int checkhc)
     {
-        int choice,ehealth=50,checkdb=0,checkiv=0,checkcurser=0;
+        int ehealth=50,checkdb=0,checkiv=0,checkcurser=0;
+        char choice;
         switch(leveldecider)
         {
             case 2: ehealth=100; break;
@@ -118,7 +119,7 @@ int level(int leveldecider, int checkhc)
     srand(time(0));
     switch(choice)
         {
-            case    1   :   if(checkdb==1)
+            case    '1'   :   if(checkdb==1)
                             {   ehealth-=(rand()%21 +35);  checkdb=0;   } 
                             else 
                                 ehealth-=(rand()%21 +15);
@@ -126,8 +127,10 @@ int level(int leveldecider, int checkhc)
                             cout<<"\n\nYou dealt damage of "<<temp2-ehealth;
 
                             if(ehealth<1)
-                                {cout<<"\n\nCongrats!"; int cc=getcoins(leveldecider);
-                                cout<<"\nYou got "<<cc<<" coins"; coins+=cc;  getch(); return 0;}
+                                {printf("\x1B[32m\n\nCongrats!\033[0m"); 
+                                int cc=getcoins(leveldecider);
+                                cout<<"\nYou got ";printf("\x1B[33m%d\033[0m",cc);cout<<" coins!"; coins+=cc;  
+                                cout<<"\n\nPress any key to continue."; getch(); return 0;}
 
                             if(checkiv==1)
                             {   health-=0;  checkiv=0;   } 
@@ -142,15 +145,17 @@ int level(int leveldecider, int checkhc)
                             cout<<"\nYour enemy dealt damage of "<<temp-health;
 
                             if(health<1)
-                                {cout<<"\n\nYou Lost!"; getch(); 
+                                {printf("\x1B[31m\n\nYou Lost!\033[0m");  
+                                cout<<"\n\nPress any key to continue."; getch(); 
                                 if(checkhc==1) 
                                     main(); 
                                 else
                                     return 0;}
+                            cout<<"\n\nPress any key to continue.";
                             getch();
                             break;
             
-            case    2   :   if(IH>0&&health<100)
+            case    '2'   :   if(IH>0&&health<100)
                             {
                                 health+=25;
                                 if(health>100)
@@ -164,7 +169,7 @@ int level(int leveldecider, int checkhc)
 
                             break;
             
-            case    3   :   if(DB>0)
+            case    '3'   :   if(DB>0)
                             {
                                 checkdb=1;
                                 DB--;
@@ -173,7 +178,7 @@ int level(int leveldecider, int checkhc)
                                 {cout<<"You dont have enough potions!"; getch();}
                             break;
             
-            case    4   :   if(IV>0)
+            case    '4'   :   if(IV>0)
                             {
                                 checkiv=1;
                                 IV--;
@@ -182,7 +187,7 @@ int level(int leveldecider, int checkhc)
                                 {cout<<"You dont have enough potions!"; getch();}
                             break;
 
-            case    5   :   if(AC>0)
+            case    '5'   :   if(AC>0)
                             {
                                 checkcurser=0;
                                 AC--;
@@ -191,7 +196,7 @@ int level(int leveldecider, int checkhc)
                                 {cout<<"You dont have enough potions!"; getch();}
                             break;
 
-            case    6   :   if(checkhc==0)
+            case    '6'   :   if(checkhc==0)
                                 return 0;
                             else
                                 break;
@@ -211,6 +216,7 @@ class hardcore : public LevelsandStore
     {
     system("CLS");
     nameofgame();
+    char ques;
     cout<<"\n\nRules & Recommendation for the HARDCORE LEVEL : \n";
     string text="\n > Store would be accessible once before the 1st level starts\n > You won't be allowed to access the store in between the levels\n > Recommended gear for the ultimate quest : ";
     typer(text,30);
@@ -222,21 +228,30 @@ class hardcore : public LevelsandStore
     text="\n\n > About 35000 coins would be needed for all of these ";
     typer(text,30);
     text="\n > Once started you can't exit to the homescreen, until you've defeated all the enemies or have been defeated!";
-    typer(text,60);
-    cout<<"\n\nPress any key to continue.";
-    getch();
-    store();
-    level(1,1);
-    level(2,1);
-    level(3,1);
-    level(4,1);
-    level(5,1);
+    typer(text,50);
+    cout<<"\n\nDo you want to continue?\n[1] Yes\n[2] No\n\nChoice : ";
+    cin>>ques;
+    switch(ques)
+    {
+        case '1' : store();
+                    level(1,1);
+                    level(2,1);
+                    level(3,1);
+                    level(4,1);
+                    level(5,1);
+                    break;
+    
+        case '2' : main();
+
+        default : error_put();
+                    break;
+    }
     }
 };
 
 int main()
 {
-    int choice;
+    char choice;
     LevelsandStore obj;
     hardcore obj2;
 while(1)
@@ -250,25 +265,25 @@ while(1)
     cin>>choice;
     switch(choice)
     {
-        case 0 : info();
+        case '0' : info();
                 break;
-        case 1 : obj.level(1,0);
+        case '1' : obj.level(1,0);
                 break;
-        case 2 : obj.level(2,0);
+        case '2' : obj.level(2,0);
                 break;
-        case 3 : obj.level(3,0);
+        case '3' : obj.level(3,0);
                 break;
-        case 4 : obj.level(4,0);
+        case '4' : obj.level(4,0);
                 break;
-        case 5 : obj.level(5,0);
+        case '5' : obj.level(5,0);
                 break;
-        case 6 : obj2.hc();
+        case '6' : obj2.hc();
                 break;
-        case 7 : obj.store();
+        case '7' : obj.store();
                 break;
-        case 8 : inventory();
+        case '8' : inventory();
                 break;
-        case 9 : return 0;
+        case '9' : return 0;
 
         default: system("CLS");
                 error_put();
@@ -303,7 +318,8 @@ void nameofgame()
 void error_put()
 {
     system("CLS");
-    cout<<"Error. Please enter a Valid choice. Press any key to Continue.\n";
+    printf("\x1B[31mERROR!!!\033[0m");
+    cout<<"\nPlease enter a Valid choice. Press any key to Continue.\n";
     getch();
 }
 
