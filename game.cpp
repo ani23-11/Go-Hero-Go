@@ -21,7 +21,7 @@ void inventory();
 void cprinter();
 void opponameprinter(int x);
 void info();
-void typer(string a, int b);
+void typer(string a, int b, int c);
 int main();
 
 class LevelsandStore
@@ -141,7 +141,7 @@ int level(int leveldecider, int checkhc)
                             else 
                             {   
                                 if(checkcurser==1)
-                                {cout<<"\nU r cursed\n"; health-=getdamage(leveldecider+10);}
+                                {printf("\x1B[31m\n\nYou are Cursed\033[0m\n");  health-=getdamage(leveldecider+10);}
                                 else
                                 {    health-=getdamage(leveldecider); checkcurser=curser(leveldecider);}
                             }
@@ -223,16 +223,16 @@ class hardcore : public LevelsandStore
     char ques;
     cout<<"\n\nRules & Recommendation for the HARDCORE LEVEL : \n";
     string text="\n > Store would be accessible once before the 1st level starts\n > You won't be allowed to access the store in between the levels\n > Recommended gear for the ultimate quest : ";
-    typer(text,30);
+    typer(text,30,0);
     cout<<"\n\n\t\t * Full Armor ";
     cout<<"\n\t\t * 10 Health Potions ";
     cout<<"\n\t\t * 8 Damage Boosters ";
     cout<<"\n\t\t * 7 Invisibility Potion ";
     cout<<"\n\t\t * 3 Anti-Curse  ";
     text="\n\n > About 35000 coins would be needed for all of these ";
-    typer(text,30);
+    typer(text,30,4);
     text="\n > Once started you can't exit to the homescreen, until you've defeated all the enemies or have been defeated!";
-    typer(text,50);
+    typer(text,50,3);
     cout<<"\n\nDo you want to continue?\n[1] Yes\n[2] No\n\nChoice : ";
     string aab;
     cin>>aab;
@@ -257,6 +257,7 @@ class hardcore : public LevelsandStore
 
 int main()
 {
+    loadingscreen(20);
     char choice;
     LevelsandStore obj;
     hardcore obj2;
@@ -291,7 +292,10 @@ while(1)
                 break;
         case '8' : inventory();
                 break;
-        case '9' : return 0;
+        case '9' : nameofgame();
+                printf("\x1B[32m\n\nThank You for Playing!\033[0m\n\n"); 
+                getch();
+                return 0;
 
         default: system("CLS");
                 error_put();
@@ -308,13 +312,12 @@ void loadingscreen(int x)
     Sleep(100);
     for(int i=0;i<width;i++)
     {
-        printf("%c",177);
+        printf("%c",124);
         Sleep(x);
     }
 }
 void nameofgame()
 {
-    //loadingscreen(20);
     system("CLS");
     cout<<endl;
     
@@ -370,23 +373,23 @@ int curser(int level)
     {
     case 1   :   x=(rand()%100);
                     if(x==32||x==92||x==47)
-                    { cout<<"\n\nYou got Cursed!\n\n";    return 1; }
+                    { printf("\x1B[31m\n\nYou got Cursed!\033[0m\n\n");    return 1; }
                 break;
     case 2   :   x=(rand()%50);
                     if(x==32||x==12||x==47)
-                    { cout<<"\n\nYou got Cursed!\n\n";    return 1; }
+                    { printf("\x1B[31m\n\nYou got Cursed!\033[0m\n\n");     return 1; }
                 break;
     case 3   :   x=(rand()%50);
                     if(x==32||x==12||x==47||x==22||x==43)
-                    { cout<<"\n\nYou got Cursed!\n\n";    return 1; }
+                    { printf("\x1B[31m\n\nYou got Cursed!\033[0m\n\n");     return 1; }
                 break;
     case 4   :   x=(rand()%20);
                     if(x==13||x==9||x==3)
-                    { cout<<"\n\nYou got Cursed!\n\n";    return 1; }
+                    { printf("\x1B[31m\n\nYou got Cursed!\033[0m\n\n");     return 1; }
                 break;
     case 5   :   x=(rand()%10);
                     if(x==3||x==7)
-                    { cout<<"\n\nYou got Cursed!\n\n";    return 1; }
+                    { printf("\x1B[31m\n\nYou got Cursed!\033[0m\n\n");     return 1; }
                 break;
     
     default  :   x=0;
@@ -513,48 +516,90 @@ void opponameprinter(int x)
     }
 }
 
-void typer(string a, int b)
+void typer(string a, int b,int c)
 {
     int x=0;
-    while(a[x]!='\0')
+    if(c==0)
+    {    while(a[x]!='\0')
+        {
+	    cout<<a[x];
+	    Sleep(b);
+	    x++;
+        }   }
+
+    else if(c==1)
     {
-	cout<<a[x];
-	Sleep(b);
-	x++;
-    }
+        while(a[x]!='\0')
+        {
+	    printf("\x1B[31m%c\033[0m",a[x]);
+	    Sleep(b);
+	    x++;
+        }   }
+
+    else if(c==2)
+    {
+        while(a[x]!='\0')
+        {
+	    printf("\x1B[35m%c\033[0m",a[x]);
+	    Sleep(b);
+	    x++;
+        }   }
+
+    else if(c==3)
+    {
+        while(a[x]!='\0')
+        {
+	    printf("\x1B[36m%c\033[0m",a[x]);
+	    Sleep(b);
+	    x++;
+        }   }
+
+    else if(c==4)
+    {
+        while(a[x]!='\0')
+        {
+	    printf("\x1B[33m%c\033[0m",a[x]);
+	    Sleep(b);
+	    x++;
+        }   }
 }
 void info()
 {
     nameofgame();
 
     string text="\n\nWelcome to Go Hero Go!\nThe player would have a bunch of different battles to choose from.\nEvery opponent is different from one another, as the level increases it becomes more difficult to win.\nDefeating an opponent would give you rewards in the form of coins that you can use to stack up your inventory!\nLook-Out for the Curses! They'll deal tons of extra damage until cured";
-    typer(text,30);
+    typer(text,30,0);
 
-    text="\n\nAbout The Opponents : \n\n\tTin Man : The Notorious Pawn of Evil.";
-    typer(text,30);
+    text="\n\nAbout The Opponents : ";
+    typer(text,30,0);
+    text="\n\n\tTin Man : The Notorious Pawn of Evil.";
+    typer(text,30,1);
     cout<<"\n\t\t\t| Damage Range : 10-15 | 3% chance of  giving a Curse | Coins rewarded : 1500-2000 |";
 
     text="\n\n\tPerverse Knight : The one who swore to fight the Good.";
-    typer(text,30);
+    typer(text,30,1);
     cout<<"\n\t\t\t| Damage Range : 15-25 | 6% chance of  giving a Curse | Coins rewarded : 2000-2500 |";
 
     text="\n\n\tMonster der Nacht : The lurker of the Night.";
-    typer(text,30);
+    typer(text,30,1);
     cout<<"\n\t\t\t| Damage Range : 15-30 | 10% chance of giving a Curse | Coins rewarded : 2500-3000 |";
     
     text="\n\n\tProtector of Dark : The one who pledged to bestow Darkness in the world.";
-    typer(text,30);
+    typer(text,30,1);
     cout<<"\n\t\t\t| Damage Range : 20-35 | 15% chance of giving a Curse | Coins rewarded : 3500-4000 |";
 
     text="\n\n\tDemon Dragon : Conqueror of Worlds.";
-    typer(text,30);
+    typer(text,30,1);
     cout<<"\n\t\t\t| Damage Range : 30-45 | 20% chance of giving a Curse |   Coins rewarded : 10000   |";
 
-    text="\n\nAbout the Potions & Gear : \n\n\t\t> Health Potion : It'll provide instant 25 health points (Max Health : 100)\n\t\t> Damage Booster : It'll deal extra 20 damage on the opponent (Base Damage Range : 15-35)\n\t\t> Invisibility Potion : It'll hide the Hero from opponent's next attack\n\t\t> Anti-Curse : It can be used to remove the Curse effect\n\t\t> Half Armor will provide 50 and Full armor will provide 100 extra non-regenerative Health Points (Not stackable)";
-    typer(text,30);
+    text="\n\nAbout the Potions & Gear :";
+    typer(text,30,0);
+
+    text="\n\n\t\t> Health Potion : It'll provide instant 25 health points (Max Health : 100)\n\t\t> Damage Booster : It'll deal extra 20 damage on the opponent (Base Damage Range : 15-35)\n\t\t> Invisibility Potion : It'll hide the Hero from opponent's next attack\n\t\t> Anti-Curse : It can be used to remove the Curse effect\n\t\t> Half Armor will provide 50 and Full armor will provide 100 extra non-regenerative Health Points (Not stackable)";
+    typer(text,30,2);
 
     text="\n\nHow To Play?\nYou have the choice to take this adventure in any direction you want to! Just make sure you press the right KEY ;)";
-    typer(text,50);
+    typer(text,50,3);
     
     cout<<"\n\nPress any key to continue.";
     getch();
