@@ -7,6 +7,9 @@
 <br>
 </p>
 
+<a href="https://youtu.be/vJzzgGdthJg">Gameplay</a>
+<br>
+<br>
 Welcome to Go Hero Go!
 This is a text based adventure game.
 The player would have a bunch of different battles to choose from.
